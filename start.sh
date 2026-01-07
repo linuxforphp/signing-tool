@@ -6,13 +6,9 @@ if [[ -z "$1" ]]; then
   echo -e "Exiting...\n"
   exit 1
 else
-  rm -f .env
-
   if [[ "$1" == "songbird" ]]; then
-    ln -s .env_songbird .env
+    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:18 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_songbird .env ; /bin/bash'
   else
-    ln -s .env_flare .env
+    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:18 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_flare .env ; /bin/bash'
   fi
-
-  docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:18 /bin/bash -c 'cd /srv/tempo/signing-tool ; /bin/bash'
 fi
