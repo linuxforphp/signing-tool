@@ -1,5 +1,8 @@
 node_modules
+.pnpm-store/
 .env
+.env_flare
+.env_songbird
 artifacts
 dist
 coverage
