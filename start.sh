@@ -7,8 +7,8 @@ if [[ -z "$1" ]]; then
   exit 1
 else
   if [[ "$1" == "songbird" ]]; then
-    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:18 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_songbird .env ; /bin/bash'
+    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:24 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_songbird .env ; npm install -g pnpm ; pnpm install ; pnpm build ; /bin/bash'
   else
-    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:18 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_flare .env ; /bin/bash'
+    docker run -it --rm -v ${PWD}/:/srv/tempo/signing-tool node:24 /bin/bash -c 'cd /srv/tempo/signing-tool ; rm -f .env ; ln -s .env_flare .env ; npm install -g pnpm ; pnpm install ; pnpm build ; /bin/bash'
   fi
 fi
